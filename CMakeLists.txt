@@ -43,7 +43,8 @@ INCLUDE_DIRECTORIES(.)
 
 
 # Add source files.
-FILE(GLOB top_files *.cpp *.cxx *.c *.hpp *.h *.hxx)
+FILE(GLOB interface_files ../*.hcc ../*.cpp ale_interface.hpp)
+FILE(GLOB top_files *.cpp *.cxx *.c *.hpp *.h *.hxx ../*.cpp ../*.hpp)
 FILE(GLOB agents_files agents/*.cpp agents/*.cxx agents/*.c agents/*.hpp agents/*.h agents/*.hxx)
 FILE(GLOB common_files common/*.cpp common/*.cxx common/*.c common/*.hpp common/*.h common/*.hxx)
 FILE(GLOB controllers_files controllers/*.cpp controllers/*.cxx controllers/*.c controllers/*.hpp controllers/*.h controllers/*.hxx)
@@ -70,7 +71,7 @@ ADD_EXECUTABLE(
 
 ADD_LIBRARY(
     xitari
-    ale_interface.hpp 
+    ${interface_files} 
     ${agents_files} 
     ${common_files} 
     ${controllers_files} 
@@ -86,7 +87,7 @@ IF (${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
 ADD_LIBRARY(
     xitari_shared
     SHARED
-    ale_interface.hpp
+    ${interface_files} 
     ${agents_files}
     ${common_files}
     ${controllers_files}
