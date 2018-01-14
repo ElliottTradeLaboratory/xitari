@@ -100,28 +100,28 @@ ADD_LIBRARY(
 SET_TARGET_PROPERTIES(xitari_shared PROPERTIES OUTPUT_NAME xitari)
 ENDIF()
 
-#SET(INCDIR "${CMAKE_INSTALL_PREFIX}/include/xitari")
-#SET(LIBDIR "${CMAKE_INSTALL_PREFIX}/lib")
+SET(INCDIR "${CMAKE_INSTALL_PREFIX}/include/xitari")
+SET(LIBDIR "${CMAKE_INSTALL_PREFIX}/lib")
 
-#MESSAGE(STATUS "INCLUDE_DIR ${INCDIR}")
-#MESSAGE(STATUS "LIBRARY_DIR ${LIBDIR}")
+MESSAGE(STATUS "INCLUDE_DIR ${INCDIR}")
+MESSAGE(STATUS "LIBRARY_DIR ${LIBDIR}")
 
-#INSTALL(
-#  FILES
-#  ale_interface.hpp
-#  DESTINATION "${INCDIR}"
-#)
+INSTALL(
+  FILES
+  ale_interface.hpp
+  DESTINATION "${INCDIR}"
+)
 
-#IF(APPLE)
-#  INSTALL(FILES
-#          libxitari.a
-#          DESTINATION "${LIBDIR}")
-#  ELSE()
-#    INSTALL(FILES
-#            libxitari.a
-#            libxitari.so
-#            DESTINATION "${LIBDIR}")
-#ENDIF()
+IF(APPLE)
+  INSTALL(FILES
+          libxitari.a
+          DESTINATION "${LIBDIR}")
+  ELSE()
+    INSTALL(FILES
+            libxitari.a
+            libxitari.so
+            DESTINATION "${LIBDIR}")
+ENDIF()
 
 TARGET_LINK_LIBRARIES(ale)
 
